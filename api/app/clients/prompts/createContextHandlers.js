@@ -115,8 +115,10 @@ function createContextHandlers(req, userMessageContent) {
               contextItems = queryResult.data
                 .map((item) => {
                   const pageContent = item[0].page_content;
+                  const metadata = item[0].metadata;
+                  const pageNumStr = metadata.page ? `(page ${metadata.page})` : '';
                   return `
-            <contextItem>
+            <contextItem>${pageNumStr}
               <![CDATA[${pageContent?.trim()}]]>
             </contextItem>`;
                 })
